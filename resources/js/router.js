@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-import Login from './components/auth/Login.vue';
+import Login from './components/auth/Login';
+import List from './components/contact/List';
 
 let routes = [
     {
@@ -11,6 +12,10 @@ let routes = [
         meta: {
             isFull: true
         }
+    }, {
+        path:'/list',
+        component: List,
+        name:'List'
     }
 ];
 
