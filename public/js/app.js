@@ -624,8 +624,9 @@ module.exports = defaults;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return client; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return client; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AUTH_TOKEN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return TOKEN; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
@@ -633,7 +634,10 @@ module.exports = defaults;
 var client = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.create({
     json: true
 });
+
 var AUTH_TOKEN = 'azim-todo-tokon';
+
+var TOKEN = localStorage.getItem(AUTH_TOKEN);
 
 /***/ }),
 /* 6 */
@@ -24995,7 +24999,7 @@ var accessToken = localStorage.getItem(__WEBPACK_IMPORTED_MODULE_1__variables_js
                 while (1) {
                     switch (_context.prev = _context.next) {
                         case 0:
-                            return _context.abrupt('return', Object(__WEBPACK_IMPORTED_MODULE_1__variables_js__["b" /* client */])({
+                            return _context.abrupt('return', Object(__WEBPACK_IMPORTED_MODULE_1__variables_js__["c" /* client */])({
                                 method: method,
                                 url: resource,
                                 data: data,
@@ -25028,7 +25032,7 @@ var accessToken = localStorage.getItem(__WEBPACK_IMPORTED_MODULE_1__variables_js
                 while (1) {
                     switch (_context2.prev = _context2.next) {
                         case 0:
-                            return _context2.abrupt('return', Object(__WEBPACK_IMPORTED_MODULE_1__variables_js__["b" /* client */])({
+                            return _context2.abrupt('return', Object(__WEBPACK_IMPORTED_MODULE_1__variables_js__["c" /* client */])({
                                 method: method,
                                 url: resource,
                                 data: data,
@@ -47432,9 +47436,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_auth_Login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_auth_Login__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Dashboard__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Dashboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_Dashboard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utility_middleware__ = __webpack_require__(66);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
 
 
 
@@ -47442,6 +47448,7 @@ var routes = [{
     path: '/',
     component: __WEBPACK_IMPORTED_MODULE_2__components_auth_Login___default.a,
     name: 'Login',
+    // beforeEnter: Guard.auth,
     meta: {
         isFull: true
     }
@@ -47449,6 +47456,7 @@ var routes = [{
     path: '/dashboard',
     component: __WEBPACK_IMPORTED_MODULE_3__components_Dashboard___default.a,
     name: 'Dashboard'
+    // beforeEnter: Guard.guest,
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
@@ -50201,11 +50209,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     });
 
                     promise.then(function (response) {
-                        Object.assign(__WEBPACK_IMPORTED_MODULE_1__utility_variables_js__["b" /* client */].defaults, {
+                        Object.assign(__WEBPACK_IMPORTED_MODULE_1__utility_variables_js__["c" /* client */].defaults, {
                             headers: {
                                 Accept: 'application/json',
                                 authorization: 'Bearer ' + response.data.access_token
                             }
+                        });
+
+                        Object.assign(function (TOKEN) {
+                            return JSON.stringify(response);
                         });
                     });
                     promise.then(function (response) {
@@ -51768,6 +51780,40 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__variables__ = __webpack_require__(5);
+
+/* unused harmony default export */ var _unused_webpack_default_export = ({
+    guest: function guest(to, from, next) {
+        console.log('gust', __WEBPACK_IMPORTED_MODULE_0__variables__["b" /* TOKEN */]);
+        if (!__WEBPACK_IMPORTED_MODULE_0__variables__["b" /* TOKEN */]) next({
+            path: '/',
+            query: {
+                redirect: to.name
+            }
+        });
+        next();
+    },
+    auth: function auth(to, from, next) {
+        console.log('auth', __WEBPACK_IMPORTED_MODULE_0__variables__["b" /* TOKEN */]);
+        if (__WEBPACK_IMPORTED_MODULE_0__variables__["b" /* TOKEN */]) next({
+            path: '/dashboard',
+            query: {
+                redirect: to.name
+            }
+        });
+        next();
+    }
+});
 
 /***/ })
 /******/ ]);

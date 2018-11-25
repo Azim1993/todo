@@ -30,7 +30,7 @@
 
 <script>
     import api              from '../../utility/api';
-    import { client, AUTH_TOKEN }   from '../../utility/variables.js'
+    import { client, AUTH_TOKEN, TOKEN }   from '../../utility/variables.js'
     import axios from 'axios'
     export default {
         name: 'login',
@@ -65,7 +65,9 @@
                                     Accept: 'application/json',
                                     authorization: `Bearer ${response.data.access_token}`
                                 }
-                            }); 
+                            });
+
+                            Object.assign(TOKEN => JSON.stringify(response))
                         })
                         promise.then((response) => {
                             localStorage.setItem(AUTH_TOKEN, JSON.stringify({
