@@ -22,11 +22,12 @@
 </template>
 
 <script>
-    import Header from './layouts/Header'
+    import appHeader from './layouts/Header'
+    import sidebar from "./layouts/Sidebar"
     export default {
         name: 'welcome',
         components: {
-            Header
+            appHeader, sidebar
         },
         computed: {
 		    isFullRoute() {

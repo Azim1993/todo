@@ -9,11 +9,32 @@
 @import '~bootstrap/scss/bootstrap';
 
 @import 'auth';
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+body {
+    background-color: #fff;
+    min-height: 100vh;
 }
 
+.inline-pull-right {
+    float: right;
+    display: inline-block !important;
+}
+
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.04);
+}
+.sidebar {
+    margin-top: 1rem;
+}
+
+.content {
+    .page-title {
+        border-left: 2px solid $theme;
+        padding-left: 0.81rem;
+        margin: 1rem 0;
+    }
+}
 .fade{
   &-enter {
     opacity: 0;

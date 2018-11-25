@@ -1,10 +1,5 @@
-import axios from 'axios'
-import { AUTH_TOKEN } from './variables.js'
-const accessToken = localStorage.getItem(AUTH_TOKEN);
-
-export const client = axios.create({
-    json: true,
-})
+import { client,AUTH_TOKEN } from './variables.js'
+const accessToken = localStorage.getItem(AUTH_TOKEN)?JSON.parse(localStorage.getItem(AUTH_TOKEN)).token:'';
 
 export default {
     async executeWithoutAuth(method, resource, data) {

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import Login from './components/auth/Login';
-import List from './components/contact/List';
+import Dashboard from './components/Dashboard';
 
 let routes = [
     {
@@ -13,9 +13,9 @@ let routes = [
             isFull: true
         }
     }, {
-        path:'/list',
-        component: List,
-        name:'List'
+        path:'/dashboard',
+        component: Dashboard,
+        name:'Dashboard'
     }
 ];
 
