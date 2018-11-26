@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Query\Contest;
-use App\Http\Requests\ContestRequest;
 
-class ContestController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +13,7 @@ class ContestController extends Controller
      */
     public function index()
     {
-        $contests = Contest::orderBy('created_at','desc')
-                    ->with('teams')
-                    ->paginate(30);
-
-        return response()->json(compact('contests'), 200);
+        //
     }
 
     /**
@@ -39,12 +32,9 @@ class ContestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContestRequest $request)
+    public function store(Request $request)
     {
-        if (Auth::user()->contests()->create($request->all()) ) {
-            return response()->json(['message' => 'Contest store successfully'], 200);
-        }
-        return response()->json(['message' => 'Contest store fail'], 500);
+        //
     }
 
     /**
@@ -53,11 +43,9 @@ class ContestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Contest $contest)
+    public function show($id)
     {
-        return response()->json([
-            'contest' => $contest->load('teams.players')
-        ], 200);
+        //
     }
 
     /**

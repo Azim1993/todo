@@ -52,6 +52,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(\App\Query\Contest::class);
     }
 
+    public function paginateContest($page = 20) {
+        return $this->contests()->paginate($page);
+    }
+
     public function teams() {
         return $this->hasMany(\App\Query\Team::class);
     }

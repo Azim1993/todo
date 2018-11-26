@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
+
 import Login from './components/auth/Login';
 import Dashboard from './components/Dashboard';
-import Contest from './components/contest/Index';
+// contest route 
+import Contests from './components/contest/Index';
+import Contest from './components/contest/Show';
 import Guard from "./utility/middleware";
 
 let routes = [
@@ -22,6 +25,11 @@ let routes = [
         // beforeEnter: Guard.guest,
     }, {
         path:'/contest',
+        component: Contests,
+        name: 'Contests',
+        // beforeEnter: Guard.guest,
+    }, {
+        path: '/contest/:id',
         component: Contest,
         name: 'Contest',
         // beforeEnter: Guard.guest,

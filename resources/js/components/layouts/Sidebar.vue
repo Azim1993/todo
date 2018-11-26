@@ -6,7 +6,7 @@
                 :class="{'active': current === 'Dashboard'}">Dashboard</router-link>
             <a href="#" class="list-group-item list-group-item-action">Todo</a>
             <router-link tag="a" class="list-group-item list-group-item-action"
-                :to="{name:'Contest'}"
+                :to="{name:'Contests'}"
                 :class="{'active': current === 'Contest'}">Contest</router-link>
             <a href="#" class="list-group-item list-group-item-action">Player</a>
             <a href="#" class="list-group-item list-group-item-action disabled">Teams</a>

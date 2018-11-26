@@ -18,7 +18,7 @@ class Team extends Model
         return $this->belongsToMany(\App\Query\Contest, 'contest_teams');
     }
 
-    public function player() {
+    public function players() {
         return $this->belongsToMany(\App\Query\User::class, 'team_players');
     }
 }

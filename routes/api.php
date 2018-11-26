@@ -20,6 +20,8 @@ Route::middleware('auth:api')->group(function() {
         ->name('api.logout');
     Route::post('/refresh', 'Auth\ApiAuthorization@refresh')
         ->name('api.refresh');
+    Route::resource('/contest', 'ContestController')
+        ->except('create','edit');
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
