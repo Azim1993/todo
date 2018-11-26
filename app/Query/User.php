@@ -47,4 +47,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function contests() {
+        return $this->hasMany(\App\Query\Contest::class);
+    }
+
+    public function teams() {
+        return $this->hasMany(\App\Query\Team::class);
+    }
 }

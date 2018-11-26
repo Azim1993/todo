@@ -15,7 +15,8 @@ class CreateContestTeamsTable extends Migration
     {
         Schema::create('contest_teams', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('contest_id')->unsigned();
+            $table->integer('user_id')->unsigned();
         });
     }
 

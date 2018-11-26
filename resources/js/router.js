@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import Login from './components/auth/Login';
 import Dashboard from './components/Dashboard';
+import Contest from './components/contest/Index';
 import Guard from "./utility/middleware";
 
 let routes = [
@@ -18,6 +19,11 @@ let routes = [
         path:'/dashboard',
         component: Dashboard,
         name: 'Dashboard',
+        // beforeEnter: Guard.guest,
+    }, {
+        path:'/contest',
+        component: Contest,
+        name: 'Contest',
         // beforeEnter: Guard.guest,
     }
 ];
